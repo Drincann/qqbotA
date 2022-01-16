@@ -21,7 +21,7 @@ class MoLiChatBot extends ChatBot {
                 'Api-Secret': config.moliApiSecret
             }
         })
-        if (result.data?.code == '00000') {
+        if (result.data?.data?.length != 0) {
             // 1: 文本, 2: 图片 image, 3: 文档, 4: 音频 voice, 9: 其它文件
             const msg = new Message()
             result.data?.data?.forEach((item: any) => {
@@ -35,7 +35,7 @@ class MoLiChatBot extends ChatBot {
                     msg.addVoiceUrl('https://files.molicloud.com/' + item.content)
                 }
             })
-            return msg
+            return msg.addText('')
         } else {
             throw new Error(result.data?.message)
         }
@@ -59,7 +59,7 @@ class TuringChatBot extends ChatBot {
                 userId: who
             }
         })
-        if (result.data?.intent?.code > 10000) {
+        if (result.data?.results?.length != 0) {
             // 文本(text);连接(url);音频(voice);视频(video);图片(image);图文(news)
             const msg = new Message()
             result.data?.results?.forEach((result: any) => {
@@ -73,7 +73,7 @@ class TuringChatBot extends ChatBot {
                     msg.addVoiceUrl(result.values.voice)
                 }
             })
-            return msg
+            return msg.addText('')
         } else {
             throw new Error(result.data?.message)
         }
