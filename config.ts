@@ -11,4 +11,5 @@ export const config = {
     turingApiKey: 'turing',
     miraiconsoleImageRoot: './image',
     processImageRoot: '../Mirai/mcl/image',
+    whichBot: 'Turing'
 }

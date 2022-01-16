@@ -49,7 +49,7 @@ class ImageService extends Service {
 class ChatService extends Service {
     protected constructor() { super() }
     static instance: Service | null = null
-    private chatBot: ChatBot | null = ChatBotFactory.createChatBot("MoLi")
+    private chatBot: ChatBot | null = ChatBotFactory.createChatBot(config.whichBot as 'Turing' | 'MoLi')
     static getInstance(): Service {
         if (!ChatService.instance) {
             ChatService.instance = new ChatService()
