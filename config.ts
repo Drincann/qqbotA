@@ -9,4 +9,6 @@ export const config = {
     moliApiKey: 'moli',
     moliApiSecret: 'moli',
     turingApiKey: 'turing',
+    miraiconsoleImageRoot: './image',
+    processImageRoot: '../Mirai/mcl/image',
 }
