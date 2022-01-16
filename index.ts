@@ -15,8 +15,12 @@ import { ServiceFactory } from './service'
             .groupFilter(config.groupList, true)
             .atFilter([config.qq], true)
             .textProcessor()
-            .done((ctx) => {
-                ServiceFactory.createService(ctx.text)?.service(ctx)
+            .done(async (ctx) => {
+                try {
+                    await ServiceFactory.createService(ctx.text)?.service(ctx)
+                } catch (e) {
+                    console.error(e)
+                }
             }))
     } catch (e) {
         console.error(e)
