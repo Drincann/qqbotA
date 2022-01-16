@@ -90,6 +90,6 @@ export class ChatBotFactory {
         } else if (type == "Turing") {
             return new TuringChatBot()
         }
-        return null;
+        return null
     }
 }

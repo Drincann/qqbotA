@@ -5,13 +5,13 @@ import fs from 'fs/promises'
 import path from 'path'
 
 interface MiraiJSContext {
-    bot: Bot;
+    bot: Bot
 }
 
 export abstract class Service {
     protected constructor() { }
-    abstract getStartWith(): string;
-    abstract service(data: MiraiJSContext | any): Promise<void>;
+    abstract getStartWith(): string
+    abstract service(data: MiraiJSContext | any): Promise<void>
 
 }
 
@@ -72,7 +72,7 @@ class ChatService extends Service {
 }
 
 export class ServiceFactory {
-    private static serviceList: Service[] = [ImageService.getInstance(), ChatService.getInstance()];
+    private static serviceList: Service[] = [ImageService.getInstance(), ChatService.getInstance()]
     static createService(text: string): Service | null {
         for (let service of this.serviceList) {
             if (text.trim().startsWith(service.getStartWith().trim())) {
