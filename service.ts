@@ -63,7 +63,7 @@ class ChatService extends Service {
     }
 
     async service(data: MiraiJSContext | any): Promise<void> {
-        data.bot.sendMessage({
+        await data.bot.sendMessage({
             group: data.sender?.group?.id,
             message: await this.chatBot?.chat(data.text, data.sender?.id)
         })
